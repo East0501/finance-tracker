@@ -5,7 +5,6 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
-          <th scope="col">info</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -13,9 +12,11 @@
         <% @friends.each do |friend| %>
           <tr>
             <th scope="row"><%= friend.full_name%></th>
-            <td><%= friend.email.slice(0) %>*****</td>
-            <td>place holder</td>
-            <td><%= link_to 'Unfollow', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-warning' %></td>
+            <td><%= friend.email.slice(0) %>*****<%= friend.email.slice(-10..-1) %></td>
+            <td>
+            <%= link_to 'View profile', user_path(friend),  class: 'btn btn-sm btn-success' %>
+            <%= link_to 'Unfollow', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-warning' %>
+            </td>
           </tr>
         <% end %>
       </tbody>
