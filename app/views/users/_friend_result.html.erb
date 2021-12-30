@@ -9,7 +9,7 @@
         <% @friends.each do |friend| %>
           <tr>
             <td><strong>Name: </strong> <%= friend.full_name%></td>
-            <td><strong>Email: </strong> <%= friend.email.slice(0) %>*****</td>
+            <td><strong>Email: </strong> <%= friend.email.slice(0) %>*****<%= friend.email.slice(-10..-1) %></td>
             <td>
               <strong>Actions: </strong> <%= link_to "View Profile", user_path(friend), class: "btn btn-sm btn-success" %>
               <% if current_user.not_friends_with?(friend.id) %>
